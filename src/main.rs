@@ -41,11 +41,11 @@ async fn main(spawner: Spawner) {
     let wifi_ssid: &'static str = option_env!("WIFI_NETWORK").unwrap_or("test");
     let wifi_pass: &'static str = option_env!("WIFI_PASSWORD").unwrap_or("test");
 
-    // let fw = include_bytes!("../firmware/43439A0.bin");
-    // let clm = include_bytes!("../firmware/43439A0_clm.bin");
+    let fw = include_bytes!("../firmware/43439A0.bin");
+    let clm = include_bytes!("../firmware/43439A0_clm.bin");
 
-    let fw = unsafe { core::slice::from_raw_parts(0x10100000 as *const u8, 230321) };
-    let clm = unsafe { core::slice::from_raw_parts(0x10140000 as *const u8, 4752) };
+    // let fw = unsafe { core::slice::from_raw_parts(0x10100000 as *const u8, 230321) };
+    // let clm = unsafe { core::slice::from_raw_parts(0x10140000 as *const u8, 4752) };
 
     let pwr = Output::new(p.PIN_23, Level::Low);
     let cs = Output::new(p.PIN_25, Level::High);
